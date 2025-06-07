@@ -1,0 +1,23 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #1a1a1a;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100vh;
+  margin: 0;
+}
+a {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 10px 20px;
+  background: #5865F2;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+}
+.container {
+  max-width: 600px;
+}
