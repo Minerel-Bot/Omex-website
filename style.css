@@ -85,14 +85,13 @@ main {
   padding: 3rem 2rem;
   display: flex;
   justify-content: flex-start;
+  align-items: center;
 
-  /* --- ONLY BACKGROUND IMAGE PROPERTIES ADDED HERE --- */
   background-image: url('Omex Banner Blue.jpg');
-  background-size: cover; /* This will make the image cover the entire main area */
-  background-position: center; /* This will center the image */
-  background-repeat: no-repeat; /* This will prevent the image from repeating */
-  /* Added a min-height to ensure the background image has space to show */
-  min-height: calc(100vh - 60px); /* Adjust 60px if your nav height is different */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: calc(100vh - 60px);
 }
 
 .hero-text {
@@ -103,5 +102,5 @@ main {
   font-size: 2.5rem;
   font-weight: 800;
   margin: 0.5rem 0;
-  color: #fff;
+  color: #ffffff;
 }
