@@ -21,28 +21,27 @@
     </ul>
 
     <div class="nav-actions">
+      <button class="login-discord" onclick="window.location.href='https://discord.com/api/oauth2/authorize?client_id=YOUR_CLIENT_ID&permissions=0&scope=identify%20email'" data-key="login">Login with Discord</button>
       <select class="language-select" aria-label="Select Language" id="language-select">
         <option value="en" selected>English</option>
         <option value="fr">Français</option>
-        <option value="ru">Русский</option>
-        <option value="nl">Nederlands</option>
-        <option value="de">Deutsch</option>
         <option value="es">Español</option>
-        <option value="it">Italiano</option>
-        <option value="zh">中文</option>
-        <option value="ja">日本語</option>
+        <option value="de">Deutsch</option>
+        <option value="tr">Türkçe</option>
+        <option value="ar">العربية</option>
+        <option value="pt">Português</option>
+        <option value="zh">繁體中文</option>
+        <option value="ru">Русский</option>
         <option value="ko">한국어</option>
       </select>
-
-      <button class="login-discord" onclick="window.location.href='https://discord.com/api/oauth2/authorize?client_id=YOUR_CLIENT_ID&permissions=0&scope=identify%20email'" data-key="login">Login with Discord</button>
     </div>
   </nav>
 
   <main>
     <section class="hero-text">
-      <h2>The Best</h2>
-      <h2>All-In-One</h2>
-      <h2>DISCORD BOT</h2>
+      <h2 data-key="hero1">The Best</h2>
+      <h2 data-key="hero2">All-In-One</h2>
+      <h2 data-key="hero3">DISCORD BOT</h2>
     </section>
   </main>
 
@@ -55,7 +54,10 @@
         commands: "Commands",
         settings: "Settings",
         support: "Support",
-        login: "Login with Discord"
+        login: "Login with Discord",
+        hero1: "The Best",
+        hero2: "All-In-One",
+        hero3: "DISCORD BOT"
       },
       fr: {
         title: "Panneau Omex Bot",
@@ -63,8 +65,107 @@
         dashboard: "Tableau de bord",
         commands: "Commandes",
         settings: "Paramètres",
+        support: "Assistance",
+        login: "Connexion avec Discord",
+        hero1: "Le Meilleur",
+        hero2: "Tout-en-un",
+        hero3: "BOT DISCORD"
+      },
+      es: {
+        title: "Panel de Omex Bot",
+        navTitle: "Panel de Omex",
+        dashboard: "Tablero",
+        commands: "Comandos",
+        settings: "Configuraciones",
+        support: "Soporte",
+        login: "Iniciar sesión con Discord",
+        hero1: "El Mejor",
+        hero2: "Todo en Uno",
+        hero3: "BOT DE DISCORD"
+      },
+      de: {
+        title: "Omex Bot-Panel",
+        navTitle: "Omex-Panel",
+        dashboard: "Übersicht",
+        commands: "Befehle",
+        settings: "Einstellungen",
         support: "Support",
-        login: "Connexion avec Discord"
+        login: "Mit Discord anmelden",
+        hero1: "Das Beste",
+        hero2: "All-in-One",
+        hero3: "DISCORD BOT"
+      },
+      tr: {
+        title: "Omex Bot Paneli",
+        navTitle: "Omex Paneli",
+        dashboard: "Kontrol Paneli",
+        commands: "Komutlar",
+        settings: "Ayarlar",
+        support: "Destek",
+        login: "Discord ile Giriş Yap",
+        hero1: "En İyisi",
+        hero2: "Hepsi Bir Arada",
+        hero3: "DISCORD BOTU"
+      },
+      ar: {
+        title: "لوحة تحكم بوت Omex",
+        navTitle: "لوحة Omex",
+        dashboard: "لوحة القيادة",
+        commands: "الأوامر",
+        settings: "الإعدادات",
+        support: "الدعم",
+        login: "تسجيل الدخول باستخدام Discord",
+        hero1: "الأفضل",
+        hero2: "الكل في واحد",
+        hero3: "بوت ديسكورد"
+      },
+      pt: {
+        title: "Painel do Bot Omex",
+        navTitle: "Painel Omex",
+        dashboard: "Painel",
+        commands: "Comandos",
+        settings: "Configurações",
+        support: "Suporte",
+        login: "Entrar com Discord",
+        hero1: "O Melhor",
+        hero2: "Tudo em Um",
+        hero3: "BOT DO DISCORD"
+      },
+      zh: {
+        title: "Omex 機器人面板",
+        navTitle: "Omex 面板",
+        dashboard: "儀表板",
+        commands: "指令",
+        settings: "設置",
+        support: "支援",
+        login: "使用 Discord 登錄",
+        hero1: "最好的",
+        hero2: "一體化",
+        hero3: "DISCORD 機器人"
+      },
+      ru: {
+        title: "Панель Omex Bot",
+        navTitle: "Панель Omex",
+        dashboard: "Панель управления",
+        commands: "Команды",
+        settings: "Настройки",
+        support: "Поддержка",
+        login: "Войти через Discord",
+        hero1: "Лучший",
+        hero2: "Все в одном",
+        hero3: "ДИСКОРД БОТ"
+      },
+      ko: {
+        title: "Omex 봇 패널",
+        navTitle: "Omex 패널",
+        dashboard: "대시보드",
+        commands: "명령어",
+        settings: "설정",
+        support: "지원",
+        login: "Discord로 로그인",
+        hero1: "최고의",
+        hero2: "올인원",
+        hero3: "디스코드 봇"
       }
     };
 
@@ -76,9 +177,9 @@
         const key = el.getAttribute("data-key");
         if (!translations[lang] || !translations[lang][key]) {
           el.textContent = translations.en[key] || el.textContent;
-          return;
+        } else {
+          el.textContent = translations[lang][key];
         }
-        el.textContent = translations[lang][key];
       });
 
       if (translations[lang] && translations[lang].title) {
