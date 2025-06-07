@@ -52,6 +52,37 @@ nav ul li a:hover {
   color: #00bcd4; /* Brighter Cyan/Teal on hover */
 }
 
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.login-discord {
+  background: #00bcd4; /* Brighter Cyan/Teal for buttons */
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+.login-discord:hover {
+  background: #008ba3; /* Darker shade of Cyan/Teal on hover */
+}
+
+.language-select {
+  background: #1a1a1a;
+  color: #eee;
+  border: 1px solid #444;
+  padding: 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
 main {
   padding: 2rem;
   display: flex;
@@ -65,7 +96,6 @@ main {
   border-radius: 10px;
   padding: 1.5rem;
   width: 280px;
-  /* Removed box-shadow completely for no glow, as per your request */
 }
 
 .online {
