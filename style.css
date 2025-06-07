@@ -1,37 +1,35 @@
 body {
   font-family: Arial, sans-serif;
-  background: #121212; /* Dark background from logo */
+  background: #121212;
   color: #eee;
   margin: 0;
   padding: 0;
 }
 
 nav {
-  background: #1a1a1a; /* Slightly darker than cards, still dark */
+  background: #1a1a1a;
   padding: 1rem 2rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-/* Styles for the logo and brand text in the nav */
 .nav-brand {
   display: flex;
-  align-items: center; /* Vertically aligns the image and text */
-  gap: 10px; /* Adds space between the logo and "Omex Panel" text */
+  align-items: center;
+  gap: 10px;
 }
 
 .logo-icon {
-  height: 30px; /* Adjust as needed for your desired logo size */
-  width: 30px; /* Keep aspect ratio square */
-  /* If your logo image isn't perfectly round, you can add border-radius: 50%; */
+  height: 30px;
+  width: 30px;
 }
 
 nav h1 {
-  margin: 0; /* Ensure no extra margin pushes it away from the logo */
+  margin: 0;
   font-weight: bold;
   font-size: 1.5rem;
-  color: #00bcd4; /* Brighter Cyan/Teal - inspired by logo */
+  color: #00bcd4;
 }
 
 nav ul {
@@ -49,7 +47,7 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-  color: #00bcd4; /* Brighter Cyan/Teal on hover */
+  color: #00bcd4;
 }
 
 .nav-actions {
@@ -59,7 +57,7 @@ nav ul li a:hover {
 }
 
 .login-discord {
-  background: #00bcd4; /* Brighter Cyan/Teal for buttons */
+  background: #00bcd4;
   border: none;
   color: white;
   padding: 10px 20px;
@@ -70,7 +68,7 @@ nav ul li a:hover {
 }
 
 .login-discord:hover {
-  background: #008ba3; /* Darker shade of Cyan/Teal on hover */
+  background: #008ba3;
 }
 
 .language-select {
@@ -84,37 +82,26 @@ nav ul li a:hover {
 }
 
 main {
-  padding: 2rem;
+  padding: 3rem 2rem;
   display: flex;
-  gap: 2rem;
-  flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-start;
+
+  /* --- ONLY BACKGROUND IMAGE PROPERTIES ADDED HERE --- */
+  background-image: url('Omex Banner Blue.jpg');
+  background-size: cover; /* This will make the image cover the entire main area */
+  background-position: center; /* This will center the image */
+  background-repeat: no-repeat; /* This will prevent the image from repeating */
+  /* Added a min-height to ensure the background image has space to show */
+  min-height: calc(100vh - 60px); /* Adjust 60px if your nav height is different */
 }
 
-.card {
-  background: #222; /* Dark card background */
-  border-radius: 10px;
-  padding: 1.5rem;
-  width: 280px;
+.hero-text {
+  text-align: left;
 }
 
-.online {
-  color: #4ade80; /* Keep green for online status */
-  font-weight: bold;
-}
-
-.actions button {
-  background: #00bcd4; /* Brighter Cyan/Teal for buttons */
-  border: none;
-  color: white;
-  padding: 10px 20px;
-  margin-right: 10px;
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: background 0.3s;
-}
-
-.actions button:hover {
-  background: #008ba3; /* Darker shade of Cyan/Teal on hover */
+.hero-text h2 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin: 0.5rem 0;
+  color: #fff;
 }
