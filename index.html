@@ -3,41 +3,298 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Omex Bot Panel</title>
+  <title data-key="title">Omex Bot Panel</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <nav>
     <div class="nav-brand">
       <img src="Omex circle logo-photoaidcom-cropped.png" alt="Omex Logo" class="logo-icon" />
-      <h1>Omex Panel</h1>
+      <h1 data-key="navTitle">Omex Panel</h1>
     </div>
+
     <ul>
-      <li><a href="#">Dashboard</a></li>
-      <li><a href="#">Commands</a></li>
-      <li><a href="#">Settings</a></li>
-      <li><a href="#">Support</a></li>
+      <li><a href="#" data-key="dashboard">Dashboard</a></li>
+      <li><a href="#" data-key="commands">Commands</a></li>
+      <li><a href="#" data-key="settings">Settings</a></li>
+      <li><a href="#" data-key="support">Support</a></li>
     </ul>
+
+    <div class="nav-actions">
+      <!-- Language selector first -->
+      <select class="language-select" aria-label="Select Language" id="language-select">
+        <option value="en" selected>English</option>
+        <option value="fr">Français</option>
+        <option value="ru">Русский</option>
+        <option value="nl">Nederlands</option>
+        <option value="de">Deutsch</option>
+        <option value="es">Español</option>
+        <option value="it">Italiano</option>
+        <option value="zh">中文</option>
+        <option value="ja">日本語</option>
+        <option value="ko">한국어</option>
+      </select>
+
+      <!-- Login with Discord button second -->
+      <button class="login-discord" onclick="window.location.href='https://discord.com/api/oauth2/authorize?client_id=YOUR_CLIENT_ID&permissions=0&scope=identify%20email'" data-key="login">Login with Discord</button>
+    </div>
   </nav>
 
   <main>
     <section class="card">
-      <h2>Server Info</h2>
-      <p>Online for: 12 days</p>
-      <p>Active Users: 2345</p>
+      <h2 data-key="serverInfo">Server Info</h2>
+      <p data-key="onlineFor">Online for: <span id="online-days">12 days</span></p>
+      <p data-key="activeUsers">Active Users: <span id="active-users">2345</span></p>
     </section>
 
     <section class="card">
-      <h2>Bot Status</h2>
-      <p>Status: <span class="online">Online</span></p>
-      <p>Uptime: 99.9%</p>
+      <h2 data-key="botStatus">Bot Status</h2>
+      <p data-key="status">Status: <span class="online" data-key="onlineStatus">Online</span></p>
+      <p data-key="uptime">Uptime: <span id="uptime">99.9%</span></p>
     </section>
 
     <section class="card actions">
-      <h2>Quick Actions</h2>
-      <button onclick="window.open('https://discord.com/api/oauth2/authorize?client_id=YOUR_CLIENT_ID&permissions=8&scope=bot%20applications.commands', '_blank')">Invite Bot</button>
-      <button onclick="window.open('https://discord.gg/YOURSUPPORTSERVER', '_blank')">Join Support</button>
+      <h2 data-key="quickActions">Quick Actions</h2>
+      <button onclick="window.open('https://discord.com/api/oauth2/authorize?client_id=YOUR_CLIENT_ID&permissions=8&scope=bot%20applications.commands', '_blank')" data-key="inviteBot">Invite Bot</button>
+      <button onclick="window.open('https://discord.gg/YOURSUPPORTSERVER', '_blank')" data-key="joinSupport">Join Support</button>
     </section>
   </main>
+
+  <script>
+    // Translation dictionary with all keys for every language
+    const translations = {
+      en: {
+        title: "Omex Bot Panel",
+        navTitle: "Omex Panel",
+        dashboard: "Dashboard",
+        commands: "Commands",
+        settings: "Settings",
+        support: "Support",
+        login: "Login with Discord",
+        serverInfo: "Server Info",
+        onlineFor: "Online for:",
+        activeUsers: "Active Users:",
+        botStatus: "Bot Status",
+        status: "Status:",
+        onlineStatus: "Online",
+        uptime: "Uptime:",
+        quickActions: "Quick Actions",
+        inviteBot: "Invite Bot",
+        joinSupport: "Join Support",
+      },
+      fr: {
+        title: "Panneau Omex Bot",
+        navTitle: "Panneau Omex",
+        dashboard: "Tableau de bord",
+        commands: "Commandes",
+        settings: "Paramètres",
+        support: "Support",
+        login: "Connexion avec Discord",
+        serverInfo: "Infos du serveur",
+        onlineFor: "En ligne depuis :",
+        activeUsers: "Utilisateurs actifs :",
+        botStatus: "Statut du bot",
+        status: "Statut :",
+        onlineStatus: "En ligne",
+        uptime: "Temps de fonctionnement :",
+        quickActions: "Actions rapides",
+        inviteBot: "Inviter le bot",
+        joinSupport: "Rejoindre le support",
+      },
+      ru: {
+        title: "Панель Omex Bot",
+        navTitle: "Панель Omex",
+        dashboard: "Панель",
+        commands: "Команды",
+        settings: "Настройки",
+        support: "Поддержка",
+        login: "Войти через Discord",
+        serverInfo: "Информация о сервере",
+        onlineFor: "Онлайн уже:",
+        activeUsers: "Активные пользователи:",
+        botStatus: "Статус бота",
+        status: "Статус:",
+        onlineStatus: "В сети",
+        uptime: "Время работы:",
+        quickActions: "Быстрые действия",
+        inviteBot: "Пригласить бота",
+        joinSupport: "Поддержка",
+      },
+      nl: {
+        title: "Omex Botpaneel",
+        navTitle: "Omex Paneel",
+        dashboard: "Dashboard",
+        commands: "Commando's",
+        settings: "Instellingen",
+        support: "Ondersteuning",
+        login: "Inloggen met Discord",
+        serverInfo: "Serverinformatie",
+        onlineFor: "Online sinds:",
+        activeUsers: "Actieve gebruikers:",
+        botStatus: "Botstatus",
+        status: "Status:",
+        onlineStatus: "Online",
+        uptime: "Uptime:",
+        quickActions: "Snelle acties",
+        inviteBot: "Nodig Bot uit",
+        joinSupport: "Sluit je aan bij Support",
+      },
+      de: {
+        title: "Omex Bot Panel",
+        navTitle: "Omex Panel",
+        dashboard: "Dashboard",
+        commands: "Befehle",
+        settings: "Einstellungen",
+        support: "Support",
+        login: "Mit Discord anmelden",
+        serverInfo: "Serverinfo",
+        onlineFor: "Online seit:",
+        activeUsers: "Aktive Benutzer:",
+        botStatus: "Botstatus",
+        status: "Status:",
+        onlineStatus: "Online",
+        uptime: "Betriebszeit:",
+        quickActions: "Schnellaktionen",
+        inviteBot: "Bot einladen",
+        joinSupport: "Support beitreten",
+      },
+      es: {
+        title: "Panel de Omex Bot",
+        navTitle: "Panel Omex",
+        dashboard: "Panel",
+        commands: "Comandos",
+        settings: "Ajustes",
+        support: "Soporte",
+        login: "Iniciar sesión con Discord",
+        serverInfo: "Información del servidor",
+        onlineFor: "En línea desde:",
+        activeUsers: "Usuarios activos:",
+        botStatus: "Estado del bot",
+        status: "Estado:",
+        onlineStatus: "En línea",
+        uptime: "Tiempo activo:",
+        quickActions: "Acciones rápidas",
+        inviteBot: "Invitar bot",
+        joinSupport: "Unirse al soporte",
+      },
+      it: {
+        title: "Pannello Omex Bot",
+        navTitle: "Pannello Omex",
+        dashboard: "Dashboard",
+        commands: "Comandi",
+        settings: "Impostazioni",
+        support: "Supporto",
+        login: "Accedi con Discord",
+        serverInfo: "Info server",
+        onlineFor: "Online da:",
+        activeUsers: "Utenti attivi:",
+        botStatus: "Stato bot",
+        status: "Stato:",
+        onlineStatus: "Online",
+        uptime: "Uptime:",
+        quickActions: "Azioni rapide",
+        inviteBot: "Invita Bot",
+        joinSupport: "Unisciti al supporto",
+      },
+      zh: {
+        title: "Omex 机器人面板",
+        navTitle: "Omex 面板",
+        dashboard: "仪表板",
+        commands: "命令",
+        settings: "设置",
+        support: "支持",
+        login: "通过 Discord 登录",
+        serverInfo: "服务器信息",
+        onlineFor: "在线时间：",
+        activeUsers: "活跃用户：",
+        botStatus: "机器人状态",
+        status: "状态：",
+        onlineStatus: "在线",
+        uptime: "正常运行时间：",
+        quickActions: "快速操作",
+        inviteBot: "邀请机器人",
+        joinSupport: "加入支持",
+      },
+      ja: {
+        title: "Omex ボットパネル",
+        navTitle: "Omex パネル",
+        dashboard: "ダッシュボード",
+        commands: "コマンド",
+        settings: "設定",
+        support: "サポート",
+        login: "Discordでログイン",
+        serverInfo: "サーバー情報",
+        onlineFor: "オンライン期間：",
+        activeUsers: "アクティブユーザー：",
+        botStatus: "ボットの状態",
+        status: "状態：",
+        onlineStatus: "オンライン",
+        uptime: "稼働時間：",
+        quickActions: "クイックアクション",
+        inviteBot: "ボットを招待",
+        joinSupport: "サポートに参加",
+      },
+      ko: {
+        title: "Omex 봇 패널",
+        navTitle: "Omex 패널",
+        dashboard: "대시보드",
+        commands: "명령어",
+        settings: "설정",
+        support: "지원",
+        login: "Discord로 로그인",
+        serverInfo: "서버 정보",
+        onlineFor: "온라인 시간:",
+        activeUsers: "활성 사용자:",
+        botStatus: "봇 상태",
+        status: "상태:",
+        onlineStatus: "온라인",
+        uptime: "가동 시간:",
+        quickActions: "빠른 작업",
+        inviteBot: "봇 초대",
+        joinSupport: "지원 참여",
+      }
+    };
+
+    const elementsToTranslate = document.querySelectorAll("[data-key]");
+    const languageSelect = document.getElementById("language-select");
+
+    function translatePage(lang) {
+      elementsToTranslate.forEach(el => {
+        const key = el.getAttribute("data-key");
+
+        if (!translations[lang] || !translations[lang][key]) {
+          console.warn(`Missing translation for key "${key}" in language "${lang}"`);
+          // fallback to English or original text
+          el.textContent = translations.en[key] || el.textContent;
+          return;
+        }
+
+        // Handle special cases with extra content inside the element
+        if (key === "onlineFor") {
+          el.innerHTML = translations[lang][key] + ' <span id="online-days">12 days</span>';
+        } else if (key === "activeUsers") {
+          el.innerHTML = translations[lang][key] + ' <span id="active-users">2345</span>';
+        } else if (key === "status") {
+          el.innerHTML = translations[lang][key] + ' <span class="online" data-key="onlineStatus">' + translations[lang]["onlineStatus"] + '</span>';
+        } else if (key === "uptime") {
+          el.innerHTML = translations[lang][key] + ' <span id="uptime">99.9%</span>';
+        } else {
+          el.textContent = translations[lang][key];
+        }
+      });
+
+      // Update <title>
+      if (translations[lang] && translations[lang].title) {
+        document.title = translations[lang].title;
+      }
+    }
+
+    languageSelect.addEventListener("change", () => {
+      translatePage(languageSelect.value);
+    });
+
+    // Initial translation on page load
+    translatePage(languageSelect.value);
+  </script>
 </body>
 </html>
