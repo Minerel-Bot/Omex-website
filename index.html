@@ -2,28 +2,24 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title data-key="title">Omex Bot Panel</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <nav>
     <div class="nav-brand">
-      <img src="Omex circle logo-photoaidcom-cropped.png" alt="Omex Logo" class="logo-icon" />
-      <h1 data-key="navTitle">Omex Panel</h1>
+      <img src="your-logo.png" class="logo-icon" alt="Logo" />
+      <h1 id="brandText">Omex</h1>
     </div>
-
     <ul>
-      <li><a href="#" data-key="dashboard">Dashboard</a></li>
-      <li><a href="#" data-key="commands">Commands</a></li>
-      <li><a href="#" data-key="settings">Settings</a></li>
-      <li><a href="#" data-key="support">Support</a></li>
+      <li><a href="#" id="navHome">Home</a></li>
+      <li><a href="#" id="navFeatures">Features</a></li>
+      <li><a href="#" id="navSupport">Support</a></li>
     </ul>
-
     <div class="nav-actions">
-      <button class="login-discord" onclick="window.location.href='https://discord.com/api/oauth2/authorize?client_id=YOUR_CLIENT_ID&permissions=0&scope=identify%20email'" data-key="login">Login with Discord</button>
-      <select class="language-select" aria-label="Select Language" id="language-select">
-        <option value="en" selected>English</option>
+      <select class="language-select" id="languageSelect">
+        <option value="en">ENG</option>
         <option value="fr">Français</option>
         <option value="es">Español</option>
         <option value="de">Deutsch</option>
@@ -34,164 +30,120 @@
         <option value="ru">Русский</option>
         <option value="ko">한국어</option>
       </select>
+
+      <button class="login-discord" id="loginBtn">Login with Discord</button>
     </div>
   </nav>
 
   <main>
-    <section class="hero-text">
-      <h2 data-key="hero1">The Best</h2>
-      <h2 data-key="hero2">All-In-One</h2>
-      <h2 data-key="hero3">DISCORD BOT</h2>
-    </section>
+    <div class="hero-text">
+      <h2 id="heroText">The Best<br />All-In-One<br />DISCORD BOT</h2>
+    </div>
   </main>
 
   <script>
     const translations = {
       en: {
-        title: "Omex Bot Panel",
-        navTitle: "Omex Panel",
-        dashboard: "Dashboard",
-        commands: "Commands",
-        settings: "Settings",
+        brand: "Omex",
+        home: "Home",
+        features: "Features",
         support: "Support",
         login: "Login with Discord",
-        hero1: "The Best",
-        hero2: "All-In-One",
-        hero3: "DISCORD BOT"
+        hero: "The Best<br />All-In-One<br />DISCORD BOT"
       },
       fr: {
-        title: "Panneau Omex Bot",
-        navTitle: "Panneau Omex",
-        dashboard: "Tableau de bord",
-        commands: "Commandes",
-        settings: "Paramètres",
+        brand: "Omex",
+        home: "Accueil",
+        features: "Fonctionnalités",
         support: "Assistance",
         login: "Connexion avec Discord",
-        hero1: "Le Meilleur",
-        hero2: "Tout-en-un",
-        hero3: "BOT DISCORD"
+        hero: "Le meilleur<br />Tout-en-un<br />BOT DISCORD"
       },
       es: {
-        title: "Panel de Omex Bot",
-        navTitle: "Panel de Omex",
-        dashboard: "Tablero",
-        commands: "Comandos",
-        settings: "Configuraciones",
+        brand: "Omex",
+        home: "Inicio",
+        features: "Funciones",
         support: "Soporte",
-        login: "Iniciar sesión con Discord",
-        hero1: "El Mejor",
-        hero2: "Todo en Uno",
-        hero3: "BOT DE DISCORD"
+        login: "Iniciar con Discord",
+        hero: "El mejor<br />Todo en uno<br />BOT DE DISCORD"
       },
       de: {
-        title: "Omex Bot-Panel",
-        navTitle: "Omex-Panel",
-        dashboard: "Übersicht",
-        commands: "Befehle",
-        settings: "Einstellungen",
+        brand: "Omex",
+        home: "Startseite",
+        features: "Funktionen",
         support: "Support",
         login: "Mit Discord anmelden",
-        hero1: "Das Beste",
-        hero2: "All-in-One",
-        hero3: "DISCORD BOT"
+        hero: "Der Beste<br />All-in-One<br />DISCORD BOT"
       },
       tr: {
-        title: "Omex Bot Paneli",
-        navTitle: "Omex Paneli",
-        dashboard: "Kontrol Paneli",
-        commands: "Komutlar",
-        settings: "Ayarlar",
+        brand: "Omex",
+        home: "Ana Sayfa",
+        features: "Özellikler",
         support: "Destek",
         login: "Discord ile Giriş Yap",
-        hero1: "En İyisi",
-        hero2: "Hepsi Bir Arada",
-        hero3: "DISCORD BOTU"
+        hero: "En İyi<br />Hepsi Bir Arada<br />DISCORD BOT"
       },
       ar: {
-        title: "لوحة تحكم بوت Omex",
-        navTitle: "لوحة Omex",
-        dashboard: "لوحة القيادة",
-        commands: "الأوامر",
-        settings: "الإعدادات",
+        brand: "أوميكس",
+        home: "الرئيسية",
+        features: "الميزات",
         support: "الدعم",
-        login: "تسجيل الدخول باستخدام Discord",
-        hero1: "الأفضل",
-        hero2: "الكل في واحد",
-        hero3: "بوت ديسكورد"
+        login: "تسجيل الدخول عبر ديسكورد",
+        hero: "الأفضل<br />الكل في واحد<br />بوت ديسكورد"
       },
       pt: {
-        title: "Painel do Bot Omex",
-        navTitle: "Painel Omex",
-        dashboard: "Painel",
-        commands: "Comandos",
-        settings: "Configurações",
+        brand: "Omex",
+        home: "Início",
+        features: "Recursos",
         support: "Suporte",
         login: "Entrar com Discord",
-        hero1: "O Melhor",
-        hero2: "Tudo em Um",
-        hero3: "BOT DO DISCORD"
+        hero: "O Melhor<br />Tudo-em-um<br />BOT DO DISCORD"
       },
       zh: {
-        title: "Omex 機器人面板",
-        navTitle: "Omex 面板",
-        dashboard: "儀表板",
-        commands: "指令",
-        settings: "設置",
-        support: "支援",
-        login: "使用 Discord 登錄",
-        hero1: "最好的",
-        hero2: "一體化",
-        hero3: "DISCORD 機器人"
+        brand: "Omex",
+        home: "首页",
+        features: "功能",
+        support: "支持",
+        login: "使用 Discord 登录",
+        hero: "最佳<br />全能型<br />DISCORD 機器人"
       },
       ru: {
-        title: "Панель Omex Bot",
-        navTitle: "Панель Omex",
-        dashboard: "Панель управления",
-        commands: "Команды",
-        settings: "Настройки",
+        brand: "Омекс",
+        home: "Главная",
+        features: "Функции",
         support: "Поддержка",
         login: "Войти через Discord",
-        hero1: "Лучший",
-        hero2: "Все в одном",
-        hero3: "ДИСКОРД БОТ"
+        hero: "Лучший<br />Все-в-одном<br />БОТ DISCORD"
       },
       ko: {
-        title: "Omex 봇 패널",
-        navTitle: "Omex 패널",
-        dashboard: "대시보드",
-        commands: "명령어",
-        settings: "설정",
+        brand: "Omex",
+        home: "홈",
+        features: "기능",
         support: "지원",
-        login: "Discord로 로그인",
-        hero1: "최고의",
-        hero2: "올인원",
-        hero3: "디스코드 봇"
+        login: "디스코드로 로그인",
+        hero: "최고의<br />올인원<br />디스코드 봇"
       }
     };
 
-    const elementsToTranslate = document.querySelectorAll("[data-key]");
-    const languageSelect = document.getElementById("language-select");
+    const selector = document.getElementById("languageSelect");
 
-    function translatePage(lang) {
-      elementsToTranslate.forEach(el => {
-        const key = el.getAttribute("data-key");
-        if (!translations[lang] || !translations[lang][key]) {
-          el.textContent = translations.en[key] || el.textContent;
-        } else {
-          el.textContent = translations[lang][key];
-        }
-      });
+    const applyTranslation = (lang) => {
+      const t = translations[lang] || translations.en;
+      document.getElementById("brandText").textContent = t.brand;
+      document.getElementById("navHome").textContent = t.home;
+      document.getElementById("navFeatures").textContent = t.features;
+      document.getElementById("navSupport").textContent = t.support;
+      document.getElementById("loginBtn").textContent = t.login;
+      document.getElementById("heroText").innerHTML = t.hero;
+    };
 
-      if (translations[lang] && translations[lang].title) {
-        document.title = translations[lang].title;
-      }
-    }
-
-    languageSelect.addEventListener("change", () => {
-      translatePage(languageSelect.value);
+    selector.addEventListener("change", () => {
+      const selected = selector.value;
+      applyTranslation(selected);
     });
 
-    translatePage(languageSelect.value);
+    // Default language on load
+    applyTranslation("en");
   </script>
 </body>
 </html>
