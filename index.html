@@ -9,7 +9,7 @@
 <body>
   <nav>
     <div class="nav-brand">
-      <img src="your-logo.png" class="logo-icon" alt="Logo" />
+      <img src="Omex circle logo.png" class="logo-icon" alt="Omex Logo" />
       <h1 id="brandText">Omex</h1>
     </div>
     <ul>
@@ -30,12 +30,21 @@
         <option value="ru">Русский</option>
         <option value="ko">한국어</option>
       </select>
-
       <button class="login-discord" id="loginBtn">Login with Discord</button>
     </div>
   </nav>
 
-  <main>
+  <main style="
+    padding: 3rem 2rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background-image: url('Omex Banner Blue.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: calc(100vh - 60px);
+  ">
     <div class="hero-text">
       <h2 id="heroText">The Best<br />All-In-One<br />DISCORD BOT</h2>
     </div>
@@ -57,14 +66,14 @@
         features: "Fonctionnalités",
         support: "Assistance",
         login: "Connexion avec Discord",
-        hero: "Le meilleur<br />Tout-en-un<br />BOT DISCORD"
+        hero: "Le meilleur<br />Tout-en-un<br />BOT DISCORDE"
       },
       es: {
         brand: "Omex",
         home: "Inicio",
         features: "Funciones",
         support: "Soporte",
-        login: "Iniciar con Discord",
+        login: "Iniciar sesión con Discord",
         hero: "El mejor<br />Todo en uno<br />BOT DE DISCORD"
       },
       de: {
@@ -73,7 +82,7 @@
         features: "Funktionen",
         support: "Support",
         login: "Mit Discord anmelden",
-        hero: "Der Beste<br />All-in-One<br />DISCORD BOT"
+        hero: "Der Beste<br />All-in-One<br />DISCORD-BOT"
       },
       tr: {
         brand: "Omex",
@@ -81,7 +90,7 @@
         features: "Özellikler",
         support: "Destek",
         login: "Discord ile Giriş Yap",
-        hero: "En İyi<br />Hepsi Bir Arada<br />DISCORD BOT"
+        hero: "En İyi<br />Hepsi Bir Arada<br />DISCORD BOTU"
       },
       ar: {
         brand: "أوميكس",
@@ -113,7 +122,7 @@
         features: "Функции",
         support: "Поддержка",
         login: "Войти через Discord",
-        hero: "Лучший<br />Все-в-одном<br />БОТ DISCORD"
+        hero: "Лучший<br />Все-в-одном<br />БОТ ДИСКОРД"
       },
       ko: {
         brand: "Omex",
@@ -138,11 +147,9 @@
     };
 
     selector.addEventListener("change", () => {
-      const selected = selector.value;
-      applyTranslation(selected);
+      applyTranslation(selector.value);
     });
 
-    // Default language on load
     applyTranslation("en");
   </script>
 </body>
