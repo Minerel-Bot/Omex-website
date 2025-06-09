@@ -1,3 +1,5 @@
+/* Your original old theme styles */
+
 body {
   font-family: Arial, sans-serif;
   background: #121212;
@@ -71,16 +73,6 @@ nav ul li a:hover {
   background: #008ba3;
 }
 
-.language-select {
-  background: #1a1a1a;
-  color: #eee;
-  border: 1px solid #444;
-  padding: 8px;
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: bold;
-}
-
 main {
   padding: 3rem 2rem;
   display: flex;
@@ -103,4 +95,80 @@ main {
   font-weight: 800;
   margin: 0.5rem 0;
   color: #ffffff;
+}
+
+/* Dropdown styles (old theme, MEE6 style) */
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-toggle {
+  background: #121212;          /* Dark background */
+  color: #ccc;                  /* Light gray text */
+  border: 1px solid #333;       /* Subtle dark border */
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: border-color 0.2s ease;
+}
+
+.dropdown-toggle:hover {
+  border-color: #555;           /* Slightly lighter on hover */
+}
+
+.dropdown-toggle .flag {
+  font-size: 18px;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 8px;
+  background: #121212;          /* Match background */
+  border-radius: 10px;
+  box-shadow: 0 6px 18px rgb(0 0 0 / 0.75);
+  min-width: 160px;
+  padding: 8px 0;
+  opacity: 0;
+  visibility: hidden;
+  transform-origin: top center;
+  transform: scaleY(0.85);
+  transition: opacity 0.15s ease, transform 0.15s ease, visibility 0.15s;
+  z-index: 100;
+  max-height: 280px;
+  overflow-y: auto;
+}
+
+.dropdown-menu.show {
+  opacity: 1;
+  visibility: visible;
+  transform: scaleY(1);
+}
+
+.dropdown-menu button {
+  background: none;
+  border: none;
+  color: #ccc;
+  width: 100%;
+  text-align: left;
+  padding: 10px 20px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.dropdown-menu button:hover {
+  background-color: #222;     /* Darker hover background */
+  color: #00bcd4;             /* Accent color for hovered language */
 }
