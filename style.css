@@ -20,9 +20,19 @@ nav {
   gap: 10px;
 }
 
-.logo-icon {
+/* Wrap logo image in a link */
+.logo-link {
+  display: inline-block;
+  cursor: pointer;
+  user-select: none;
+}
+
+.logo-link img {
   height: 30px;
   width: 30px;
+  pointer-events: auto;
+  -webkit-user-drag: none; /* disable dragging in WebKit browsers */
+  user-drag: none;
 }
 
 nav h1 {
