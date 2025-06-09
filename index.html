@@ -18,25 +18,19 @@
       <li><a href="#" id="navSupport">Support</a></li>
     </ul>
     <div class="nav-actions">
-      <!-- Custom dropdown for language -->
-      <div class="dropdown" id="languageDropdown">
-        <button class="dropdown-toggle" id="dropdownToggle" aria-haspopup="true" aria-expanded="false">
-          <span class="flag" id="selectedFlag">🇬🇧</span> <span id="selectedLang">ENG</span>
-          <svg style="width:14px;height:14px;margin-left:6px;" viewBox="0 0 24 24">
-            <path fill="#ccc" d="M7,10L12,15L17,10H7Z" />
-          </svg>
-        </button>
-        <div class="dropdown-menu" id="dropdownMenu" role="menu" aria-labelledby="dropdownToggle">
-          <button class="dropdown-item" data-lang="en" data-flag="🇬🇧">ENG</button>
-          <button class="dropdown-item" data-lang="fr" data-flag="🇫🇷">Français</button>
-          <button class="dropdown-item" data-lang="es" data-flag="🇪🇸">Español</button>
-          <button class="dropdown-item" data-lang="de" data-flag="🇩🇪">Deutsch</button>
-          <button class="dropdown-item" data-lang="tr" data-flag="🇹🇷">Türkçe</button>
-          <button class="dropdown-item" data-lang="ar" data-flag="🇸🇦">العربية</button>
-          <button class="dropdown-item" data-lang="pt" data-flag="🇵🇹">Português</button>
-          <button class="dropdown-item" data-lang="zh" data-flag="🇨🇳">繁體中文</button>
-          <button class="dropdown-item" data-lang="ru" data-flag="🇷🇺">Русский</button>
-          <button class="dropdown-item" data-lang="ko" data-flag="🇰🇷">한국어</button>
+      <div class="language-dropdown">
+        <button class="dropdown-toggle" id="languageToggle">ENG <span class="arrow">▼</span></button>
+        <div class="dropdown-menu" id="languageMenu">
+          <button class="dropdown-item" data-lang="en">ENG</button>
+          <button class="dropdown-item" data-lang="fr">Français</button>
+          <button class="dropdown-item" data-lang="es">Español</button>
+          <button class="dropdown-item" data-lang="de">Deutsch</button>
+          <button class="dropdown-item" data-lang="tr">Türkçe</button>
+          <button class="dropdown-item" data-lang="ar">العربية</button>
+          <button class="dropdown-item" data-lang="pt">Português</button>
+          <button class="dropdown-item" data-lang="zh">繁體中文</button>
+          <button class="dropdown-item" data-lang="ru">Русский</button>
+          <button class="dropdown-item" data-lang="ko">한국어</button>
         </div>
       </div>
       <button class="login-discord" id="loginBtn">Login with Discord</button>
@@ -133,54 +127,47 @@
       }
     };
 
-    const dropdownToggle = document.getElementById("dropdownToggle");
-    const dropdownMenu = document.getElementById("dropdownMenu");
-    const selectedLang = document.getElementById("selectedLang");
-    const selectedFlag = document.getElementById("selectedFlag");
+    const brandText = document.getElementById("brandText");
+    const navHome = document.getElementById("navHome");
+    const navFeatures = document.getElementById("navFeatures");
+    const navSupport = document.getElementById("navSupport");
+    const loginBtn = document.getElementById("loginBtn");
+    const heroText = document.getElementById("heroText");
+    const languageToggle = document.getElementById("languageToggle");
+    const languageMenu = document.getElementById("languageMenu");
 
     function applyTranslation(lang) {
       const t = translations[lang] || translations.en;
-      document.getElementById("brandText").textContent = t.brand;
-      document.getElementById("navHome").textContent = t.home;
-      document.getElementById("navFeatures").textContent = t.features;
-      document.getElementById("navSupport").textContent = t.support;
-      document.getElementById("loginBtn").textContent = t.login;
-      document.getElementById("heroText").innerHTML = t.hero;
+      brandText.textContent = t.brand;
+      navHome.textContent = t.home;
+      navFeatures.textContent = t.features;
+      navSupport.textContent = t.support;
+      loginBtn.textContent = t.login;
+      heroText.innerHTML = t.hero;
+      languageToggle.innerHTML = `${lang.toUpperCase()} <span class="arrow">▼</span>`;
     }
 
-    // Toggle dropdown menu visibility
-    dropdownToggle.addEventListener("click", () => {
-      const expanded = dropdownToggle.getAttribute("aria-expanded") === "true";
-      dropdownToggle.setAttribute("aria-expanded", !expanded);
-      dropdownMenu.classList.toggle("show");
+    // Toggle dropdown
+    languageToggle.addEventListener("click", () => {
+      languageMenu.classList.toggle("show");
     });
 
-    // Close dropdown if clicked outside
+    // Close dropdown when clicking outside
     document.addEventListener("click", (e) => {
-      if (!dropdownToggle.contains(e.target) && !dropdownMenu.contains(e.target)) {
-        dropdownMenu.classList.remove("show");
-        dropdownToggle.setAttribute("aria-expanded", false);
+      if (!e.target.closest(".language-dropdown")) {
+        languageMenu.classList.remove("show");
       }
     });
 
-    // When clicking language options
-    dropdownMenu.querySelectorAll(".dropdown-item").forEach(button => {
-      button.addEventListener("click", () => {
-        const lang = button.getAttribute("data-lang");
-        const flag = button.getAttribute("data-flag");
-
-        selectedLang.textContent = button.textContent;
-        selectedFlag.textContent = flag;
-
-        applyTranslation(lang);
-
-        // Close dropdown
-        dropdownMenu.classList.remove("show");
-        dropdownToggle.setAttribute("aria-expanded", false);
+    // Language selection
+    languageMenu.querySelectorAll(".dropdown-item").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const selectedLang = btn.getAttribute("data-lang");
+        applyTranslation(selectedLang);
+        languageMenu.classList.remove("show");
       });
     });
 
-    // Initialize default language
     applyTranslation("en");
   </script>
 </body>
