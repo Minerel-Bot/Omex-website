@@ -5,6 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Omex Bot Panel</title>
   <link rel="stylesheet" href="style.css" />
+  <style>
+    .discord-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+      cursor: default;
+    }
+  </style>
 </head>
 <body>
   <nav>
@@ -68,15 +77,11 @@
       ko: { brand: "Omex", home: "홈", features: "기능", support: "지원", login: "디스코드로 로그인", hero: "최고의<br />올인원<br />디스코드 봇", subtext: `Omex는 커뮤니티가 신뢰하는 강력한 올인원 Discord 봇으로,<br />전 세계에서 서버를 쉽게 관리하고 향상시킬 수 있습니다.` }
     };
 
-    const brandText = document.getElementById("brandText");
-    const navHome = document.querySelector("ul li:nth-child(1) a");
-    const navFeatures = document.querySelector("ul li:nth-child(2) a");
-    const navSupport = document.querySelector("ul li:nth-child(3) a");
-    const loginBtn = document.getElementById("loginBtn");
-    const heroText = document.getElementById("heroText");
-    const heroSubtext = document.getElementById("heroSubtext");
-    const languageToggle = document.getElementById("languageToggle");
-    const languageMenu = document.getElementById("languageMenu");
+    function getCookie(name) {
+      const value = `; ${document.cookie}`;
+      const parts = value.split(`; ${name}=`);
+      if (parts.length === 2) return decodeURIComponent(parts.pop().split(";").shift());
+    }
 
     function applyTranslation(lang) {
       const t = translations[lang] || translations.en;
@@ -90,6 +95,37 @@
       languageToggle.innerHTML = `${lang.toUpperCase()} <span class="arrow">▼</span>`;
     }
 
+    const brandText = document.getElementById("brandText");
+    const navHome = document.querySelector("ul li:nth-child(1) a");
+    const navFeatures = document.querySelector("ul li:nth-child(2) a");
+    const navSupport = document.querySelector("ul li:nth-child(3) a");
+    const loginBtn = document.getElementById("loginBtn");
+    const heroText = document.getElementById("heroText");
+    const heroSubtext = document.getElementById("heroSubtext");
+    const languageToggle = document.getElementById("languageToggle");
+    const languageMenu = document.getElementById("languageMenu");
+
+    // Handle avatar display
+    const discordUserRaw = getCookie("discord_user");
+    if (discordUserRaw) {
+      try {
+        const user = JSON.parse(discordUserRaw);
+        const avatarUrl = user.avatar
+          ? `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png`
+          : `https://cdn.discordapp.com/embed/avatars/${parseInt(user.discriminator) % 5}.png`;
+
+        const avatarImg = document.createElement("img");
+        avatarImg.src = avatarUrl;
+        avatarImg.alt = `${user.username}'s avatar`;
+        avatarImg.classList.add("discord-avatar");
+
+        loginBtn.replaceWith(avatarImg);
+      } catch (err) {
+        console.error("Invalid discord_user cookie", err);
+      }
+    }
+
+    // Language dropdown behavior
     languageToggle.addEventListener("click", () => {
       languageMenu.classList.toggle("show");
     });
@@ -108,26 +144,6 @@
       });
     });
 
-    async function checkLogin() {
-      try {
-        const res = await fetch("/api/user");
-        const data = await res.json();
-
-        if (res.ok) {
-          loginBtn.textContent = `Welcome, ${data.user.username}`;
-          loginBtn.dataset.loggedin = "true";
-          loginBtn.removeAttribute("href");
-          loginBtn.style.cursor = "default";
-        } else {
-          loginBtn.textContent = "Login with Discord";
-          loginBtn.setAttribute("href", "https://discord.com/oauth2/authorize?client_id=1382211684097327235&redirect_uri=https%3A%2F%2Fomex-website.vercel.app%2Fapi%2Fcallback&response_type=code&scope=identify");
-        }
-      } catch {
-        loginBtn.textContent = "Login with Discord";
-      }
-    }
-
-    checkLogin();
     applyTranslation("en");
   </script>
 </body>
