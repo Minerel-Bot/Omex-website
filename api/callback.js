@@ -1,43 +1,51 @@
-export default async function handler(req, res) {
-  const code = req.query.code;
+// /api/callback.js
+
+import { serialize } from 'cookie';
+
+export async function GET(request) {
+  const { searchParams } = new URL(request.url);
+  const code = searchParams.get("code");
 
   if (!code) {
-    return res.status(400).send("No code provided.");
+    return new Response("Missing code", { status: 400 });
   }
 
   const params = new URLSearchParams();
-  params.append("client_id", "1382211684097327235"); // Replace this
-  params.append("client_secret", "3oUpdjpI0RR7dw3PKeg2Zg-J05mGTu9k"); // Replace this
+  params.append("client_id", process.env.DISCORD_CLIENT_ID);
+  params.append("client_secret", process.env.DISCORD_CLIENT_SECRET);
   params.append("grant_type", "authorization_code");
   params.append("code", code);
-  params.append("redirect_uri", "https://omex-website.vercel.app/api/callback");
+  params.append("redirect_uri", process.env.DISCORD_REDIRECT_URI);
   params.append("scope", "identify");
 
   const tokenRes = await fetch("https://discord.com/api/oauth2/token", {
     method: "POST",
-    headers: {
-      "Content-Type": "application/x-www-form-urlencoded",
-    },
-    body: params,
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: params
   });
 
   const tokenData = await tokenRes.json();
-
-  if (!tokenData.access_token) {
-    return res.status(400).json({ error: "Failed to get access token", details: tokenData });
-  }
+  const accessToken = tokenData.access_token;
 
   const userRes = await fetch("https://discord.com/api/users/@me", {
-    headers: {
-      Authorization: `Bearer ${tokenData.access_token}`,
-    },
+    headers: { Authorization: `Bearer ${accessToken}` }
   });
 
-  const userData = await userRes.json();
+  const user = await userRes.json();
+  const username = `${user.username}#${user.discriminator}`;
 
-  res.status(200).send(`
-    <h2>Welcome, ${userData.username}#${userData.discriminator}!</h2>
-    <p>User ID: ${userData.id}</p>
-    <p>Thanks for logging in with Discord 😊</p>
-  `);
+  // Set cookie
+  const cookie = serialize("discord_user", encodeURIComponent(username), {
+    path: "/",
+    httpOnly: false,
+    maxAge: 60 * 60 * 24 * 7 // 7 days
+  });
+
+  return new Response(null, {
+    status: 302,
+    headers: {
+      Location: "https://omex-website.vercel.app/",
+      "Set-Cookie": cookie
+    }
+  });
 }
