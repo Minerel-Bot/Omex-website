@@ -164,10 +164,10 @@ nav ul li a:hover {
 }
 
 main {
-  padding: 3rem 2rem;
+  padding: 6rem 2rem 2rem 2rem; /* Add more top padding */
   display: flex;
   justify-content: flex-start;
-  align-items: center;
+  align-items: flex-start; /* Align hero text to the top */
   background-image: url('Omex Banner Blue.jpg');
   background-size: cover;
   background-position: center;
