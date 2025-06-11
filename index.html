@@ -3,21 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title data-key="title">Omex Bot Panel</title>
+  <title>Omex Bot Panel</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <nav>
     <div class="nav-brand">
-      <a href="https://omex-website.vercel.app/" target="_blank" rel="noopener noreferrer" class="logo-link">
+      <a href="https://omex-website.vercel.app/" class="logo-link">
         <img src="Omex circle logo-photoaidcom-cropped.png" class="logo-icon" alt="Omex Logo" draggable="false" />
       </a>
       <h1 id="brandText">Omex</h1>
     </div>
     <ul>
-      <li><a href="#" id="navHome">Home</a></li>
-      <li><a href="#" id="navFeatures">Features</a></li>
-      <li><a href="#" id="navSupport">Support</a></li>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Features</a></li>
+      <li><a href="#">Support</a></li>
     </ul>
     <div class="nav-actions">
       <div class="language-dropdown">
@@ -35,7 +35,7 @@
           <button class="dropdown-item" data-lang="ko">한국어</button>
         </div>
       </div>
-      <button class="login-discord" id="loginBtn">Login with Discord</button>
+      <a id="loginBtn" href="https://discord.com/oauth2/authorize?client_id=YOUR_CLIENT_ID&redirect_uri=https%3A%2F%2Fomex-website.vercel.app%2Fapi%2Fcallback&response_type=code&scope=identify" class="login-discord">Login with Discord</a>
     </div>
   </nav>
 
@@ -56,120 +56,22 @@
 
   <script>
     const translations = {
-      en: {
-        brand: "Omex",
-        home: "Home",
-        features: "Features",
-        support: "Support",
-        login: "Login with Discord",
-        hero: "The Best<br />All-In-One<br />DISCORD BOT",
-        subtext: `Omex is a powerful all-in-one Discord bot, trusted by communities<br />
-                  worldwide to moderate, manage, and enhance their<br />
-                  servers with ease and reliability.`
-      },
-      fr: {
-        brand: "Omex",
-        home: "Accueil",
-        features: "Fonctionnalités",
-        support: "Assistance",
-        login: "Connexion avec Discord",
-        hero: "Le meilleur<br />Tout-en-un<br />BOT DISCORDE",
-        subtext: `Omex est un bot Discord tout-en-un puissant, utilisé dans le monde entier<br />
-                  pour modérer, gérer et améliorer les serveurs<br />
-                  avec facilité et fiabilité.`
-      },
-      es: {
-        brand: "Omex",
-        home: "Inicio",
-        features: "Funciones",
-        support: "Soporte",
-        login: "Iniciar sesión con Discord",
-        hero: "El mejor<br />Todo en uno<br />BOT DE DISCORD",
-        subtext: `Omex es un bot todo-en-uno para Discord, confiable para moderar,<br />
-                  gestionar y mejorar servidores con facilidad<br />
-                  y fiabilidad en todo el mundo.`
-      },
-      de: {
-        brand: "Omex",
-        home: "Startseite",
-        features: "Funktionen",
-        support: "Support",
-        login: "Mit Discord anmelden",
-        hero: "Der Beste<br />All-in-One<br />DISCORD-BOT",
-        subtext: `Omex ist ein leistungsstarker All-in-One Discord-Bot, der weltweit<br />
-                  von Communities zur Moderation, Verwaltung und Verbesserung<br />
-                  ihrer Server verwendet wird.`
-      },
-      tr: {
-        brand: "Omex",
-        home: "Ana Sayfa",
-        features: "Özellikler",
-        support: "Destek",
-        login: "Discord ile Giriş Yap",
-        hero: "En İyi<br />Hepsi Bir Arada<br />DISCORD BOTU",
-        subtext: `Omex, sunucularını kolayca yönetmek ve geliştirmek için dünya çapında<br />
-                  topluluklar tarafından güvenilen güçlü bir<br />
-                  hepsi bir arada Discord botudur.`
-      },
-      ar: {
-        brand: "أوميكس",
-        home: "الرئيسية",
-        features: "الميزات",
-        support: "الدعم",
-        login: "تسجيل الدخول عبر ديسكورد",
-        hero: "الأفضل<br />الكل في واحد<br />بوت ديسكورد",
-        subtext: `Omex هو بوت قوي وشامل لديسكورد، موثوق من قبل المجتمعات<br />
-                  في جميع أنحاء العالم لإدارة وتطوير خوادمهم<br />
-                  بسهولة وموثوقية.`
-      },
-      pt: {
-        brand: "Omex",
-        home: "Início",
-        features: "Recursos",
-        support: "Suporte",
-        login: "Entrar com Discord",
-        hero: "O Melhor<br />Tudo-em-um<br />BOT DO DISCORD",
-        subtext: `Omex é um bot completo do Discord confiável por comunidades em todo o mundo<br />
-                  para moderar, gerenciar e melhorar seus servidores<br />
-                  com facilidade e confiabilidade.`
-      },
-      zh: {
-        brand: "Omex",
-        home: "首页",
-        features: "功能",
-        support: "支持",
-        login: "使用 Discord 登录",
-        hero: "最佳<br />全能型<br />DISCORD 機器人",
-        subtext: `Omex 是一个强大的全能 Discord 机器人，全球社区信赖它来<br />
-                  轻松可靠地管理、优化和增强他们的服务器。`
-      },
-      ru: {
-        brand: "Омекс",
-        home: "Главная",
-        features: "Функции",
-        support: "Поддержка",
-        login: "Войти через Discord",
-        hero: "Лучший<br />Все-в-одном<br />БОТ ДИСКОРД",
-        subtext: `Omex — это мощный универсальный бот Discord, которому доверяют сообщества<br />
-                  по всему миру для модерирования, управления и улучшения<br />
-                  серверов с легкостью и надежностью.`
-      },
-      ko: {
-        brand: "Omex",
-        home: "홈",
-        features: "기능",
-        support: "지원",
-        login: "디스코드로 로그인",
-        hero: "최고의<br />올인원<br />디스코드 봇",
-        subtext: `Omex는 커뮤니티가 신뢰하는 강력한 올인원 Discord 봇으로,<br />
-                  전 세계에서 서버를 쉽게 관리하고 향상시킬 수 있습니다.`
-      }
+      en: { brand: "Omex", home: "Home", features: "Features", support: "Support", login: "Login with Discord", hero: "The Best<br />All-In-One<br />DISCORD BOT", subtext: `Omex is a powerful all-in-one Discord bot, trusted by communities<br />worldwide to moderate, manage, and enhance their<br />servers with ease and reliability.` },
+      fr: { brand: "Omex", home: "Accueil", features: "Fonctionnalités", support: "Assistance", login: "Connexion avec Discord", hero: "Le meilleur<br />Tout-en-un<br />BOT DISCORDE", subtext: `Omex est un bot Discord tout-en-un puissant, utilisé dans le monde entier<br />pour modérer, gérer et améliorer les serveurs<br />avec facilité et fiabilité.` },
+      es: { brand: "Omex", home: "Inicio", features: "Funciones", support: "Soporte", login: "Iniciar sesión con Discord", hero: "El mejor<br />Todo en uno<br />BOT DE DISCORD", subtext: `Omex es un bot todo-en-uno para Discord, confiable para moderar,<br />gestionar y mejorar servidores con facilidad<br />y fiabilidad en todo el mundo.` },
+      de: { brand: "Omex", home: "Startseite", features: "Funktionen", support: "Support", login: "Mit Discord anmelden", hero: "Der Beste<br />All-in-One<br />DISCORD-BOT", subtext: `Omex ist ein leistungsstarker All-in-One Discord-Bot, der weltweit<br />von Communities zur Moderation, Verwaltung und Verbesserung<br />ihrer Server verwendet wird.` },
+      tr: { brand: "Omex", home: "Ana Sayfa", features: "Özellikler", support: "Destek", login: "Discord ile Giriş Yap", hero: "En İyi<br />Hepsi Bir Arada<br />DISCORD BOTU", subtext: `Omex, sunucularını kolayca yönetmek ve geliştirmek için dünya çapında<br />topluluklar tarafından güvenilen güçlü bir<br />hepsi bir arada Discord botudur.` },
+      ar: { brand: "أوميكس", home: "الرئيسية", features: "الميزات", support: "الدعم", login: "تسجيل الدخول عبر ديسكورد", hero: "الأفضل<br />الكل في واحد<br />بوت ديسكورد", subtext: `Omex هو بوت قوي وشامل لديسكورد، موثوق من قبل المجتمعات<br />في جميع أنحاء العالم لإدارة وتطوير خوادمهم<br />بسهولة وموثوقية.` },
+      pt: { brand: "Omex", home: "Início", features: "Recursos", support: "Suporte", login: "Entrar com Discord", hero: "O Melhor<br />Tudo-em-um<br />BOT DO DISCORD", subtext: `Omex é um bot completo do Discord confiável por comunidades em todo o mundo<br />para moderar, gerenciar e melhorar seus servidores<br />com facilidade e confiabilidade.` },
+      zh: { brand: "Omex", home: "首页", features: "功能", support: "支持", login: "使用 Discord 登录", hero: "最佳<br />全能型<br />DISCORD 機器人", subtext: `Omex 是一个强大的全能 Discord 机器人，全球社区信赖它来<br />轻松可靠地管理、优化和增强他们的服务器。` },
+      ru: { brand: "Омекс", home: "Главная", features: "Функции", support: "Поддержка", login: "Войти через Discord", hero: "Лучший<br />Все-в-одном<br />БОТ ДИСКОРД", subtext: `Omex — это мощный универсальный бот Discord, которому доверяют сообщества<br />по всему миру для модерирования, управления и улучшения<br />серверов с легкостью и надежностью.` },
+      ko: { brand: "Omex", home: "홈", features: "기능", support: "지원", login: "디스코드로 로그인", hero: "최고의<br />올인원<br />디스코드 봇", subtext: `Omex는 커뮤니티가 신뢰하는 강력한 올인원 Discord 봇으로,<br />전 세계에서 서버를 쉽게 관리하고 향상시킬 수 있습니다.` }
     };
 
     const brandText = document.getElementById("brandText");
-    const navHome = document.getElementById("navHome");
-    const navFeatures = document.getElementById("navFeatures");
-    const navSupport = document.getElementById("navSupport");
+    const navHome = document.querySelector("ul li:nth-child(1) a");
+    const navFeatures = document.querySelector("ul li:nth-child(2) a");
+    const navSupport = document.querySelector("ul li:nth-child(3) a");
     const loginBtn = document.getElementById("loginBtn");
     const heroText = document.getElementById("heroText");
     const heroSubtext = document.getElementById("heroSubtext");
@@ -182,7 +84,7 @@
       navHome.textContent = t.home;
       navFeatures.textContent = t.features;
       navSupport.textContent = t.support;
-      loginBtn.textContent = t.login;
+      if (!loginBtn.dataset.loggedin) loginBtn.textContent = t.login;
       heroText.innerHTML = t.hero;
       heroSubtext.innerHTML = t.subtext;
       languageToggle.innerHTML = `${lang.toUpperCase()} <span class="arrow">▼</span>`;
@@ -206,13 +108,19 @@
       });
     });
 
-    // Discord OAuth2 Login
-    loginBtn.addEventListener("click", () => {
-      const CLIENT_ID = "1382211684097327235";
-      const REDIRECT_URI = "https://omex-website.vercel.app/api/callback";
-      const url = `https://discord.com/oauth2/authorize?client_id=${CLIENT_ID}&redirect_uri=${encodeURIComponent(REDIRECT_URI)}&response_type=code&scope=identify`;
-      window.location.href = url;
-    });
+    function getCookie(name) {
+      const value = `; ${document.cookie}`;
+      const parts = value.split(`; ${name}=`);
+      if (parts.length === 2) return decodeURIComponent(parts.pop().split(';').shift());
+    }
+
+    const discordUser = getCookie("discord_user");
+    if (discordUser) {
+      loginBtn.textContent = `Logged in as: ${discordUser}`;
+      loginBtn.dataset.loggedin = "true";
+      loginBtn.removeAttribute("href");
+      loginBtn.style.cursor = "default";
+    }
 
     applyTranslation("en");
   </script>
