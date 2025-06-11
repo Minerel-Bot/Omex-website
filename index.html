@@ -206,6 +206,14 @@
       });
     });
 
+    // Discord OAuth2 Login
+    loginBtn.addEventListener("click", () => {
+      const CLIENT_ID = "1382211684097327235";
+      const REDIRECT_URI = "https://omex-website.vercel.app/api/callback";
+      const url = `https://discord.com/oauth2/authorize?client_id=${CLIENT_ID}&redirect_uri=${encodeURIComponent(REDIRECT_URI)}&response_type=code&scope=identify`;
+      window.location.href = url;
+    });
+
     applyTranslation("en");
   </script>
 </body>
