@@ -184,4 +184,38 @@ main {
   font-weight: 800;
   margin: 0.5rem 0;
   color: #ffffff;
+}.hero-buttons {
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.btn-primary,
+.btn-secondary {
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.3s ease;
+  font-size: 1rem;
+}
+
+.btn-primary {
+  background-color: #00bcd4;
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background-color: #009db0;
+}
+
+.btn-secondary {
+  background-color: transparent;
+  border: 2px solid #00bcd4;
+  color: #00bcd4;
+}
+
+.btn-secondary:hover {
+  background-color: #00bcd4;
+  color: #121212;
 }
