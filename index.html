@@ -6,12 +6,17 @@
   <title>Omex Bot Panel</title>
   <link rel="stylesheet" href="style.css" />
   <style>
+    /* Styling for Discord user avatar */
     .discord-avatar {
       width: 40px;
       height: 40px;
       border-radius: 50%;
       object-fit: cover;
-      cursor: default;
+      cursor: pointer; /* Change cursor to pointer for the avatar */
+      transition: transform 0.2s ease; /* Add a subtle hover effect */
+    }
+    .discord-avatar:hover {
+        transform: scale(1.05); /* Slight scale on hover */
     }
   </style>
 </head>
@@ -24,9 +29,9 @@
       <h1 id="brandText">Omex</h1>
     </div>
     <ul>
-      <li><a href="#">Home</a></li>
-      <li><a href="#">Features</a></li>
-      <li><a href="#">Support</a></li>
+      <li><a href="#" id="navHome">Home</a></li>
+      <li><a href="#" id="navFeatures">Features</a></li>
+      <li><a href="#" id="navSupport">Support</a></li>
     </ul>
     <div class="nav-actions">
       <div class="language-dropdown">
@@ -89,16 +94,19 @@
       navHome.textContent = t.home;
       navFeatures.textContent = t.features;
       navSupport.textContent = t.support;
-      if (!loginBtn.dataset.loggedin) loginBtn.textContent = t.login;
+      // Only update loginBtn text if it's not replaced by avatar
+      if (loginBtn.style.display !== 'none') { // Check if it's still visible
+          loginBtn.textContent = t.login;
+      }
       heroText.innerHTML = t.hero;
       heroSubtext.innerHTML = t.subtext;
       languageToggle.innerHTML = `${lang.toUpperCase()} <span class="arrow">▼</span>`;
     }
 
     const brandText = document.getElementById("brandText");
-    const navHome = document.querySelector("ul li:nth-child(1) a");
-    const navFeatures = document.querySelector("ul li:nth-child(2) a");
-    const navSupport = document.querySelector("ul li:nth-child(3) a");
+    const navHome = document.getElementById("navHome"); // Changed to use ID
+    const navFeatures = document.getElementById("navFeatures"); // Changed to use ID
+    const navSupport = document.getElementById("navSupport"); // Changed to use ID
     const loginBtn = document.getElementById("loginBtn");
     const heroText = document.getElementById("heroText");
     const heroSubtext = document.getElementById("heroSubtext");
@@ -109,25 +117,39 @@
     const discordUserRaw = getCookie("discord_user");
     if (discordUserRaw) {
       try {
-        const user = JSON.parse(discordUserRaw);
+        const user = JSON.parse(discordUserRaw); // Parse the JSON string from the cookie
         const avatarUrl = user.avatar
-          ? `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png`
-          : `https://cdn.discordapp.com/embed/avatars/${parseInt(user.discriminator) % 5}.png`;
+          ? `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png?size=80` // Added ?size=80 for better quality
+          : `https://cdn.discordapp.com/embed/avatars/${parseInt(user.discriminator) % 5}.png?size=80`; // Use % 5 for default avatar, added size
 
         const avatarImg = document.createElement("img");
         avatarImg.src = avatarUrl;
         avatarImg.alt = `${user.username}'s avatar`;
         avatarImg.classList.add("discord-avatar");
 
-        loginBtn.replaceWith(avatarImg);
+        // Optional: Add a tooltip or link to profile/logout
+        avatarImg.title = `Logged in as ${user.username}#${user.discriminator}`;
+        avatarImg.addEventListener('click', () => {
+            // Example: Redirect to a logout endpoint
+            window.location.href = '/api/logout'; // Make sure this path is correct for your logout endpoint
+        });
+
+        loginBtn.replaceWith(avatarImg); // Replace the button with the image
+
       } catch (err) {
-        console.error("Invalid discord_user cookie", err);
+        console.error("Invalid discord_user cookie or JSON parse error:", err);
+        // If there's an error, ensure login button is visible
+        loginBtn.style.display = '';
       }
+    } else {
+        // If no cookie, ensure login button is visible
+        loginBtn.style.display = '';
     }
 
     // Language dropdown behavior
-    languageToggle.addEventListener("click", () => {
-      languageMenu.classList.toggle("show");
+    languageToggle.addEventListener("click", (event) => {
+        event.stopPropagation(); // Prevent document click from closing it immediately
+        languageMenu.classList.toggle("show");
     });
 
     document.addEventListener("click", (e) => {
@@ -141,10 +163,16 @@
         const selectedLang = btn.getAttribute("data-lang");
         applyTranslation(selectedLang);
         languageMenu.classList.remove("show");
+        // Update language toggle text after selection
+        languageToggle.innerHTML = `${selectedLang.toUpperCase()} <span class="arrow">▼</span>`;
       });
     });
 
-    applyTranslation("en");
+    // Initial translation application
+    // Get language from cookie if available, otherwise default to 'en'
+    const storedLang = getCookie('lang_pref') || 'en'; // Assuming you might save language preference
+    applyTranslation(storedLang);
+
   </script>
 </body>
 </html>
