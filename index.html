@@ -12,11 +12,11 @@
       height: 40px;
       border-radius: 50%;
       object-fit: cover;
-      cursor: pointer; /* Change cursor to pointer for the avatar */
-      transition: transform 0.2s ease; /* Add a subtle hover effect */
+      cursor: default; /* Show default cursor instead of pointer */
+      transition: transform 0.2s ease; /* Keep subtle hover effect */
     }
     .discord-avatar:hover {
-        transform: scale(1.05); /* Slight scale on hover */
+        transform: scale(1.05); /* Still allow slight scale on hover */
     }
   </style>
 </head>
@@ -24,7 +24,7 @@
   <nav>
     <div class="nav-brand">
       <a href="https://omex-website.vercel.app/" class="logo-link">
-        <img src="Omex circle logo-photoaidcom-cropped.png" class="logo-icon" alt="Omex Logo" draggable="false" />
+        <img src="Omex circle logo.png" class="logo-icon" alt="Omex Logo" draggable="false" />
       </a>
       <h1 id="brandText">Omex</h1>
     </div>
@@ -104,9 +104,9 @@
     }
 
     const brandText = document.getElementById("brandText");
-    const navHome = document.getElementById("navHome"); // Changed to use ID
-    const navFeatures = document.getElementById("navFeatures"); // Changed to use ID
-    const navSupport = document.getElementById("navSupport"); // Changed to use ID
+    const navHome = document.getElementById("navHome");
+    const navFeatures = document.getElementById("navFeatures");
+    const navSupport = document.getElementById("navSupport");
     const loginBtn = document.getElementById("loginBtn");
     const heroText = document.getElementById("heroText");
     const heroSubtext = document.getElementById("heroSubtext");
@@ -127,12 +127,9 @@
         avatarImg.alt = `${user.username}'s avatar`;
         avatarImg.classList.add("discord-avatar");
 
-        // Optional: Add a tooltip or link to profile/logout
         avatarImg.title = `Logged in as ${user.username}#${user.discriminator}`;
-        avatarImg.addEventListener('click', () => {
-            // Example: Redirect to a logout endpoint
-            window.location.href = '/api/logout'; // Make sure this path is correct for your logout endpoint
-        });
+        // The click event listener for the avatar is intentionally removed here
+        // to make it non-clickable, as per your request.
 
         loginBtn.replaceWith(avatarImg); // Replace the button with the image
 
@@ -169,8 +166,7 @@
     });
 
     // Initial translation application
-    // Get language from cookie if available, otherwise default to 'en'
-    const storedLang = getCookie('lang_pref') || 'en'; // Assuming you might save language preference
+    const storedLang = getCookie('lang_pref') || 'en';
     applyTranslation(storedLang);
 
   </script>
