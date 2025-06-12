@@ -7,7 +7,8 @@ body {
 }
 
 nav {
-  background: #1a1a1a;
+  /* Updated background to use the banner image */
+  background: url('BlueFlowerBanner.jpg') center center / cover no-repeat;
   padding: 1rem 2rem;
   display: flex;
   align-items: center;
@@ -39,7 +40,7 @@ nav h1 {
   margin: 0;
   font-weight: bold;
   font-size: 1.5rem;
-  color: #00bcd4;
+  color: #00bcd4; /* Keep text color for visibility */
 }
 
 nav ul {
@@ -51,7 +52,7 @@ nav ul {
 }
 
 nav ul li a {
-  color: #eee;
+  color: #eee; /* Keep text color for visibility */
   text-decoration: none;
   font-weight: 600;
 }
@@ -74,7 +75,8 @@ nav ul li a:hover {
 }
 
 .dropdown-toggle {
-  background: #1a1a1a;
+  /* Adjusted background for dropdown toggle */
+  background: rgba(26, 26, 26, 0.7); /* Slightly transparent dark background */
   border: 1px solid #444;
   color: #eee;
   padding: 8px 14px;
@@ -90,7 +92,7 @@ nav ul li a:hover {
 }
 
 .dropdown-toggle:hover {
-  background: #222;
+  background: rgba(34, 34, 34, 0.8); /* Slightly darker on hover */
 }
 
 .arrow {
@@ -168,7 +170,7 @@ main {
   display: flex;
   justify-content: flex-start;
   align-items: flex-start; /* Align hero text to the top */
-  background-image: url('Omex Banner Blue.jpg'); /* Your desired background image */
+  background-image: url('Omex Banner Blue.jpg'); /* Keep this for the main section */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
