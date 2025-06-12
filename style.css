@@ -168,15 +168,19 @@ main {
   display: flex;
   justify-content: flex-start;
   align-items: flex-start; /* Align hero text to the top */
-  background-image: url('Omex Banner Blue.jpg');
+  background-image: url('Omex Banner Blue.jpg'); /* Your desired background image */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  min-height: calc(100vh - 60px);
+  min-height: calc(100vh - 60px); /* Ensure main takes up screen height */
 }
 
 .hero-text {
   text-align: left;
+  /* Added a background to hero-text for better readability over the banner image */
+  background: rgba(18, 18, 18, 0.6); /* Semi-transparent dark background */
+  padding: 20px;
+  border-radius: 10px;
 }
 
 .hero-text h2 {
@@ -184,7 +188,16 @@ main {
   font-weight: 800;
   margin: 0.5rem 0;
   color: #ffffff;
-}.hero-buttons {
+}
+
+.hero-subtext {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  color: #ccc; /* Slightly lighter text for subtext */
+}
+
+.hero-buttons {
   margin-top: 1.5rem;
   display: flex;
   gap: 1rem;
