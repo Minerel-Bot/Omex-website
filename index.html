@@ -6,17 +6,17 @@
   <title>Omex Bot Panel</title>
   <link rel="stylesheet" href="style.css" />
   <style>
-    /* Styling for Discord user avatar */
     .discord-avatar {
       width: 40px;
       height: 40px;
       border-radius: 50%;
       object-fit: cover;
-      cursor: default; /* Show default cursor instead of pointer */
-      transition: transform 0.2s ease; /* Keep subtle hover effect */
+      cursor: default;
+      transition: transform 0.2s ease;
     }
+
     .discord-avatar:hover {
-        transform: scale(1.05); /* Still allow slight scale on hover */
+      transform: scale(1.05);
     }
   </style>
 </head>
@@ -34,21 +34,6 @@
       <li><a href="#" id="navSupport">Support</a></li>
     </ul>
     <div class="nav-actions">
-      <div class="language-dropdown">
-        <button class="dropdown-toggle" id="languageToggle">ENG <span class="arrow">▼</span></button>
-        <div class="dropdown-menu" id="languageMenu">
-          <button class="dropdown-item" data-lang="en">ENG</button>
-          <button class="dropdown-item" data-lang="fr">Français</button>
-          <button class="dropdown-item" data-lang="es">Español</button>
-          <button class="dropdown-item" data-lang="de">Deutsch</button>
-          <button class="dropdown-item" data-lang="tr">Türkçe</button>
-          <button class="dropdown-item" data-lang="ar">العربية</button>
-          <button class="dropdown-item" data-lang="pt">Português</button>
-          <button class="dropdown-item" data-lang="zh">繁體中文</button>
-          <button class="dropdown-item" data-lang="ru">Русский</button>
-          <button class="dropdown-item" data-lang="ko">한국어</button>
-        </div>
-      </div>
       <a id="loginBtn" href="https://discord.com/oauth2/authorize?client_id=1382211684097327235&redirect_uri=https%3A%2F%2Fomex-website.vercel.app%2Fapi%2Fcallback&response_type=code&scope=identify" class="login-discord">Login with Discord</a>
     </div>
   </nav>
@@ -69,106 +54,35 @@
   </main>
 
   <script>
-    const translations = {
-      en: { brand: "Omex", home: "Home", features: "Features", support: "Support", login: "Login with Discord", hero: "The Best<br />All-In-One<br />DISCORD BOT", subtext: `Omex is a powerful all-in-one Discord bot, trusted by communities<br />worldwide to moderate, manage, and enhance their<br />servers with ease and reliability.` },
-      fr: { brand: "Omex", home: "Accueil", features: "Fonctionnalités", support: "Assistance", login: "Connexion avec Discord", hero: "Le meilleur<br />Tout-en-un<br />BOT DISCORDE", subtext: `Omex est un bot Discord tout-en-un puissant, utilisé dans le monde entier<br />pour modérer, gérer et améliorer les serveurs<br />avec facilité et fiabilité.` },
-      es: { brand: "Omex", home: "Inicio", features: "Funciones", support: "Soporte", login: "Iniciar sesión con Discord", hero: "El mejor<br />Todo en uno<br />BOT DE DISCORD", subtext: `Omex es un bot todo-en-uno para Discord, confiable para moderar,<br />gestionar y mejorar servidores con facilidad<br />y fiabilidad en todo el mundo.` },
-      de: { brand: "Omex", home: "Startseite", features: "Funktionen", support: "Support", login: "Mit Discord anmelden", hero: "Der Beste<br />All-in-One<br />DISCORD-BOT", subtext: `Omex ist ein leistungsstarker All-in-One Discord-Bot, der weltweit<br />von Communities zur Moderation, Verwaltung und Verbesserung<br />ihrer Server verwendet wird.` },
-      tr: { brand: "Omex", home: "Ana Sayfa", features: "Özellikler", support: "Destek", login: "Discord ile Giriş Yap", hero: "En İyi<br />Hepsi Bir Arada<br />DISCORD BOTU", subtext: `Omex, sunucularını kolayca yönetmek ve geliştirmek için dünya çapında<br />topluluklar tarafından güvenilen güçlü bir<br />hepsi bir arada Discord botudur.` },
-      ar: { brand: "أوميكس", home: "الرئيسية", features: "الميزات", support: "الدعم", login: "تسجيل الدخول عبر ديسكورد", hero: "الأفضل<br />الكل في واحد<br />بوت ديسكورد", subtext: `Omex هو بوت قوي وشامل لديسكورد، موثوق من قبل المجتمعات<br />في جميع أنحاء العالم لإدارة وتطوير خوادمهم<br />بسهولة وموثوقية.` },
-      pt: { brand: "Omex", home: "Início", features: "Recursos", support: "Suporte", login: "Entrar com Discord", hero: "O Melhor<br />Tudo-em-um<br />BOT DO DISCORD", subtext: `Omex é um bot completo do Discord confiável por comunidades em todo o mundo<br />para moderar, gerenciar e melhorar seus servidores<br />com facilidade e confiabilidade.` },
-      zh: { brand: "Omex", home: "首页", features: "功能", support: "支持", login: "使用 Discord 登录", hero: "最佳<br />全能型<br />DISCORD 機器人", subtext: `Omex 是一个强大的全能 Discord 机器人，全球社区信赖它来<br />轻松可靠地管理、优化和增强他们的服务器。` },
-      ru: { brand: "Омекс", home: "Главная", features: "Функции", support: "Поддержка", login: "Войти через Discord", hero: "Лучший<br />Все-в-одном<br />БОТ ДИСКОРД", subtext: `Omex — это мощный универсальный бот Discord, которому доверяют сообщества<br />по всему миру для модерирования, управления и улучшения<br />серверов с легкостью и надежностью.` },
-      ko: { brand: "Omex", home: "홈", features: "기능", support: "지원", login: "디스코드로 로그인", hero: "최고의<br />올인원<br />디스코드 봇", subtext: `Omex는 커뮤니티가 신뢰하는 강력한 올인원 Discord 봇으로,<br />전 세계에서 서버를 쉽게 관리하고 향상시킬 수 있습니다.` }
-    };
-
     function getCookie(name) {
       const value = `; ${document.cookie}`;
       const parts = value.split(`; ${name}=`);
       if (parts.length === 2) return decodeURIComponent(parts.pop().split(";").shift());
     }
 
-    function applyTranslation(lang) {
-      const t = translations[lang] || translations.en;
-      brandText.textContent = t.brand;
-      navHome.textContent = t.home;
-      navFeatures.textContent = t.features;
-      navSupport.textContent = t.support;
-      // Only update loginBtn text if it's not replaced by avatar
-      if (loginBtn.style.display !== 'none') { // Check if it's still visible
-          loginBtn.textContent = t.login;
-      }
-      heroText.innerHTML = t.hero;
-      heroSubtext.innerHTML = t.subtext;
-      languageToggle.innerHTML = `${lang.toUpperCase()} <span class="arrow">▼</span>`;
-    }
-
-    const brandText = document.getElementById("brandText");
-    const navHome = document.getElementById("navHome");
-    const navFeatures = document.getElementById("navFeatures");
-    const navSupport = document.getElementById("navSupport");
     const loginBtn = document.getElementById("loginBtn");
-    const heroText = document.getElementById("heroText");
-    const heroSubtext = document.getElementById("heroSubtext");
-    const languageToggle = document.getElementById("languageToggle");
-    const languageMenu = document.getElementById("languageMenu");
 
-    // Handle avatar display
     const discordUserRaw = getCookie("discord_user");
     if (discordUserRaw) {
       try {
-        const user = JSON.parse(discordUserRaw); // Parse the JSON string from the cookie
+        const user = JSON.parse(discordUserRaw);
         const avatarUrl = user.avatar
-          ? `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png?size=80` // Added ?size=80 for better quality
-          : `https://cdn.discordapp.com/embed/avatars/${parseInt(user.discriminator) % 5}.png?size=80`; // Use % 5 for default avatar, added size
+          ? `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png?size=80`
+          : `https://cdn.discordapp.com/embed/avatars/${parseInt(user.discriminator) % 5}.png?size=80`;
 
         const avatarImg = document.createElement("img");
         avatarImg.src = avatarUrl;
         avatarImg.alt = `${user.username}'s avatar`;
         avatarImg.classList.add("discord-avatar");
-
         avatarImg.title = `Logged in as ${user.username}#${user.discriminator}`;
-        // The click event listener for the avatar is intentionally removed here
-        // to make it non-clickable, as per your request.
-
-        loginBtn.replaceWith(avatarImg); // Replace the button with the image
-
+        loginBtn.replaceWith(avatarImg);
       } catch (err) {
         console.error("Invalid discord_user cookie or JSON parse error:", err);
-        // If there's an error, ensure login button is visible
         loginBtn.style.display = '';
       }
     } else {
-        // If no cookie, ensure login button is visible
-        loginBtn.style.display = '';
+      loginBtn.style.display = '';
     }
-
-    // Language dropdown behavior
-    languageToggle.addEventListener("click", (event) => {
-        event.stopPropagation(); // Prevent document click from closing it immediately
-        languageMenu.classList.toggle("show");
-    });
-
-    document.addEventListener("click", (e) => {
-      if (!e.target.closest(".language-dropdown")) {
-        languageMenu.classList.remove("show");
-      }
-    });
-
-    languageMenu.querySelectorAll(".dropdown-item").forEach(btn => {
-      btn.addEventListener("click", () => {
-        const selectedLang = btn.getAttribute("data-lang");
-        applyTranslation(selectedLang);
-        languageMenu.classList.remove("show");
-        // Update language toggle text after selection
-        languageToggle.innerHTML = `${selectedLang.toUpperCase()} <span class="arrow">▼</span>`;
-      });
-    });
-
-    // Initial translation application
-    const storedLang = getCookie('lang_pref') || 'en';
-    applyTranslation(storedLang);
-
   </script>
 </body>
 </html>
