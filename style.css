@@ -20,7 +20,6 @@ nav {
   gap: 10px;
 }
 
-/* Wrap logo image in a link */
 .logo-link {
   display: inline-block;
   cursor: pointer;
@@ -31,7 +30,7 @@ nav {
   height: 30px;
   width: 30px;
   pointer-events: auto;
-  -webkit-user-drag: none; /* disable dragging in WebKit browsers */
+  -webkit-user-drag: none;
   user-drag: none;
 }
 
@@ -67,87 +66,6 @@ nav ul li a:hover {
   position: relative;
 }
 
-/* Language dropdown container */
-.language-dropdown {
-  position: relative;
-  user-select: none;
-}
-
-.dropdown-toggle {
-  background: #1a1a1a;
-  border: 1px solid #444;
-  color: #eee;
-  padding: 8px 14px;
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: bold;
-  font-size: 1rem;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  min-width: 90px;
-  transition: background 0.3s ease;
-}
-
-.dropdown-toggle:hover {
-  background: #222;
-}
-
-.arrow {
-  font-size: 0.7rem;
-  line-height: 1;
-}
-
-/* Dropdown menu */
-.dropdown-menu {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  margin-top: 8px;
-  background: #121212;
-  border-radius: 10px;
-  box-shadow: 0 6px 18px rgb(0 0 0 / 0.75);
-  min-width: 160px;
-  padding: 8px 0;
-  opacity: 0;
-  visibility: hidden;
-  transform-origin: top center;
-  transform: scaleY(0.85);
-  transition: opacity 0.15s ease, transform 0.15s ease, visibility 0.15s;
-  z-index: 100;
-
-  /* Show all languages, no scroll */
-  max-height: unset;
-  overflow-y: visible;
-}
-
-/* Show menu when .show class added */
-.dropdown-menu.show {
-  opacity: 1;
-  visibility: visible;
-  transform: scaleY(1);
-}
-
-/* Dropdown items */
-.dropdown-item {
-  background: transparent;
-  border: none;
-  color: #eee;
-  padding: 10px 20px;
-  text-align: left;
-  width: 100%;
-  cursor: pointer;
-  font-weight: 600;
-  font-size: 0.95rem;
-  transition: background 0.2s ease;
-}
-
-.dropdown-item:hover {
-  background: #00bcd4;
-  color: #121212;
-}
-
-/* Discord login button */
 .login-discord {
   background: #00bcd4;
   border: none;
@@ -164,21 +82,20 @@ nav ul li a:hover {
 }
 
 main {
-  padding: 6rem 2rem 2rem 2rem; /* Add more top padding */
+  padding: 6rem 2rem 2rem 2rem;
   display: flex;
   justify-content: flex-start;
-  align-items: flex-start; /* Align hero text to the top */
-  background-image: url('Omex Banner Blue.jpg'); /* Your desired background image */
+  align-items: flex-start;
+  background-image: url('Omex Banner Blue.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  min-height: calc(100vh - 60px); /* Ensure main takes up screen height */
+  min-height: calc(100vh - 60px);
 }
 
 .hero-text {
   text-align: left;
-  /* Added a background to hero-text for better readability over the banner image */
-  background: rgba(18, 18, 18, 0.6); /* Semi-transparent dark background */
+  background: rgba(18, 18, 18, 0.6);
   padding: 20px;
   border-radius: 10px;
 }
@@ -194,7 +111,7 @@ main {
   font-size: 1.1rem;
   line-height: 1.6;
   margin-bottom: 2rem;
-  color: #ccc; /* Slightly lighter text for subtext */
+  color: #ccc;
 }
 
 .hero-buttons {
